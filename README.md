@@ -1,0 +1,2 @@
+# BetterScraper
+Python webscraper
