@@ -9,13 +9,15 @@ title = driver.title
 
 driver.implicitly_wait(1)
 
-text_box = driver.find_elements(by=By.CLASS_NAME, value="title")
+item_names = driver.find_elements(by=By.CLASS_NAME, value="title")
 
 #get_attribute("value") is used to get the value of the input element,
 #.text is the text inside the html element
-value = text_box[0].text
-print (value)
+# value = item_names[0].text
+# print (value)
 
+for element in item_names:
+    print(element.text)
 
 
 
