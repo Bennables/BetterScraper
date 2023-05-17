@@ -27,11 +27,18 @@ xpath
 
 item_names = driver.find_elements(by=By.CLASS_NAME, value="title")
 ratings=  soup.find_all('p')
-arr = []
+prices=  soup.find_all("h4", class_="price")
+rating_arr = []
+price_arr = []
 
 for x in ratings:
     if x.has_attr('data-rating'):
-        arr.append(x['data-rating'])
+        rating_arr.append(x['data-rating'])
+
+for x in prices:
+    price_arr.append(x.get_text())
+
+print (price_arr)
 
 
 
@@ -43,7 +50,7 @@ for x in ratings:
 # print (value)
 
 for i, element in enumerate(item_names):
-    print(element.text +"    " +  arr[i])
+    print(element.text +"    " +  rating_arr[i])
 
 
 
