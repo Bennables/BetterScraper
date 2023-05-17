@@ -10,7 +10,7 @@ driver.get("https://webscraper.io/test-sites/e-commerce/allinone/")
 page_source = driver.page_source
 soup = BeautifulSoup(page_source, 'html.parser')
 
-
+items = []
 
 driver.implicitly_wait(1)
 
@@ -38,19 +38,20 @@ for x in ratings:
 for x in prices:
     price_arr.append(x.get_text())
 
-print (price_arr)
+for i, element in enumerate(item_names):
+    # print(element.text +"    " +  rating_arr[i])
+    print()
+for x in range(len(rating_arr)):
+    items.append([item_names[x].text,price_arr[x], rating_arr[x]] )
 
-
-
-
+print (items)
 
 #get_attribute("value") is used to get the value of the input element,
 #.text is the text inside the html element
 # value = item_names[0].text
 # print (value)
 
-for i, element in enumerate(item_names):
-    print(element.text +"    " +  rating_arr[i])
+
 
 
 
