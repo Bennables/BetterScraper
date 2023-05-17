@@ -1,6 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from bs4 import BeautifulSoup
+import numpy as np
 
 
 driver = webdriver.Chrome()
@@ -26,9 +27,11 @@ xpath
 
 item_names = driver.find_elements(by=By.CLASS_NAME, value="title")
 ratings=  soup.find_all('p')
+arr = []
+
 for x in ratings:
     if x.has_attr('data-rating'):
-        print(x['data-rating'])
+        arr.append(x['data-rating'])
 
 
 
@@ -39,8 +42,9 @@ for x in ratings:
 # value = item_names[0].text
 # print (value)
 
-for element in item_names:
-    print(element.text)
+for i, element in enumerate(item_names):
+    print(element.text +"    " +  arr[i])
+
 
 
 driver.quit()
